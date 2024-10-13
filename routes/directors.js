@@ -52,23 +52,12 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.post('/', (req, res, next) => {
-    const director = new Directors(req.body);
-    const promise = director.save();
-    promise.then(result => {
-        if (!result) return res.status(404).send('No directors found');
-        res.status(200).json(result);
-    }).catch((err) => {
-        next(err);
-    });
-});
-
 router.get('/:director_id', (req, res, next) => {
     const promise = Directors.aggregate([
         {
-          $match: {
-              '_id': new mongoose.Types.ObjectId(req.params.director_id)
-          }
+            $match: {
+                '_id': new mongoose.Types.ObjectId(req.params.director_id)
+            }
         },
         {
             $lookup: {
@@ -114,5 +103,40 @@ router.get('/:director_id', (req, res, next) => {
         next(err);
     })
 });
+
+router.post('/', (req, res, next) => {
+    const director = new Directors(req.body);
+    const promise = director.save();
+    promise.then(result => {
+        if (!result) return res.status(404).send('No directors found');
+        res.status(200).json(result);
+    }).catch((err) => {
+        next(err);
+    });
+});
+
+router.put('/:director_id', (req,res,next) => {
+   const promise = Directors.findByIdAndUpdate(req.params.director_id, req.body, {
+       new: true
+   });
+   promise.then((result) => {
+       if (!result) return res.status(404).send('No directors found');
+       res.status(200).json(result);
+   }).catch((err) => {
+       next(err);
+   });
+});
+
+router.delete('/:director_id', (req,res,next) => {
+    const promise = Directors.findByIdAndDelete(req.params.director_id);
+    promise.then((result) => {
+        if (!result) return res.status(404).send('No directors found');
+        res.status(200).json(result);
+    }).catch((err) => {
+        next(err);
+    });
+})
+
+
 
 module.exports = router;
