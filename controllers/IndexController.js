@@ -37,7 +37,7 @@ const loginUser = (req, res, next) => {
             const token = jwt.sign(payload, req.app.get('api_secret_key'), {
                 expiresIn: 720
             });
-            res.status(200).json(token);
+            res.status(200).json({token});
         });
 
     }).catch((err) => {
