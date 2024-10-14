@@ -30,8 +30,3 @@ Bu Repoda NodeJS, Express ve MongoDB ile RestAPI Geliştirdim
 | /register | `POST` | { username: 'foo', password:'1234' } | Create a new user. |
 | /login    | `POST` | { username: 'foo', password:'1234' } | Generate a token. |
 
-# Demo
-
-[Live demo on Heroku](https://node-egitimi-movie-api.herokuapp.com/)
-
-enjoy!
