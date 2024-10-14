@@ -62,7 +62,7 @@ const updateMoviesByID = (req, res, next) => {
     );
     promise.then((result) => {
         if (!result) return res.status(404).send('No movies found');
-        res.status(200).send(`Successfully deleted this movie ${result}`);
+        res.status(200).json(result);
     }).catch((err) => {
         next(err);
     });
@@ -72,7 +72,7 @@ const deleteMoviesById = (req, res, next) => {
     const promise = Movie.findByIdAndDelete(req.params.movie_id);
     promise.then((result) => {
         if (!result) return res.status(404).send('No movies found');
-        res.status(200).json(result);
+        res.status(200).json({status: 1});
     }).catch((err) => {
         next(err);
     });

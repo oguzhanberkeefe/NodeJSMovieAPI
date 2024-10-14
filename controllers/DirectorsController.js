@@ -88,13 +88,14 @@ const getDirectorDetails = (req, res, next) => {
                 _id: '$_id._id',
                 name: '$_id.name',
                 surname: '$_id.surname',
+                bio: '$_id.bio',
                 movies: '$movies',
             }
         }
     ]);
     promise.then(result => {
         if (!result) return res.status(404).send('No directors found');
-        res.status(200).json(result);
+        res.status(200).json(result[0]);
     }).catch((err) => {
         next(err);
     })
@@ -127,7 +128,7 @@ const deleteDirectorById = (req, res, next) => {
     const promise = Directors.findByIdAndDelete(req.params.director_id);
     promise.then((result) => {
         if (!result) return res.status(404).send('No directors found');
-        res.status(200).json(result);
+        res.status(200).json({status: 1});
     }).catch((err) => {
         next(err);
     });
