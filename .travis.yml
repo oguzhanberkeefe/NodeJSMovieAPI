@@ -1,10 +1,10 @@
 language: node_js
 node_js:
-  - 21
+  - "21"
 dist: focal # veya jammy
 services:
   - mongodb  # MongoDB servisini burada ekledik
 install:
     - npm install
 script:
-  - npm run test
+  - npm test
