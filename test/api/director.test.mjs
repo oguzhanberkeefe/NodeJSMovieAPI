@@ -15,6 +15,7 @@ describe('/api/directors Methods', () => {
                 password: '12345678'
             })
             .end((err, res) => {
+                if (err) return done(err); // Hata durumunda done() ile hata ilet
                 token = res.body.token;
                 console.log(token);
                 res.should.have.status(200);
@@ -28,6 +29,7 @@ describe('/api/directors Methods', () => {
                 .get('/api/directors')
                 .set('x-access-token', token)
                 .end((err, res) => {
+                    if (err) return done(err); // Hata durumunda done() ile hata ilet
                     res.should.have.status(200);
                     res.body.should.be.a('array');
                     done();
@@ -46,6 +48,7 @@ describe('/api/directors Methods', () => {
                 .send(director)
                 .set('x-access-token', token)
                 .end((err, res) => {
+                    if (err) return done(err); // Hata durumunda done() ile hata ilet
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     res.body.should.have.property('name');
@@ -62,6 +65,7 @@ describe('/api/directors Methods', () => {
                 .get('/api/directors/' + directorID)
                 .set('x-access-token', token)
                 .end((err, res) => {
+                    if (err) return done(err); // Hata durumunda done() ile hata ilet
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     res.body.should.have.property('name');
@@ -96,6 +100,7 @@ describe('/api/directors Methods', () => {
                 .set('x-access-token', token)
                 .send(director)
                 .end((err, res) => {
+                    if (err) return done(err); // Hata durumunda done() ile hata ilet
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     res.body.should.have.property('name').eql(director.name);
@@ -111,6 +116,7 @@ describe('/api/directors Methods', () => {
                 .delete('/api/directors/'+directorID)
                 .set('x-access-token', token)
                 .end((err, res) => {
+                    if (err) return done(err); // Hata durumunda done() ile hata ilet
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     res.body.should.have.property('status').eql(1);

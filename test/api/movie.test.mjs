@@ -15,6 +15,7 @@ describe('/api/movies test',  () => {
                 password: '12345678'
             })
             .end((err, res) => {
+                if (err) return done(err); // Hata durumunda done() ile hata ilet
                 token = res.body.token;
                 console.log(token);
                 done();
@@ -27,6 +28,7 @@ describe('/api/movies test',  () => {
                 .get('/api/movies')
                 .set('x-access-token', token)
                 .end((err, res) => {
+                    if (err) return done(err); // Hata durumunda done() ile hata ilet
                     res.should.have.status(200);
                     res.body.should.be.a('array');
                     done();
@@ -48,6 +50,7 @@ describe('/api/movies test',  () => {
                 .send(movie)
                 .set('x-access-token', token)
                 .end((err, res) => {
+                    if (err) return done(err); // Hata durumunda done() ile hata ilet
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     res.body.should.have.property('title');
@@ -67,6 +70,7 @@ describe('/api/movies test',  () => {
                 .get('/api/movies/'+movieID)
                 .set('x-access-token', token)
                 .end((err, res) => {
+                    if (err) return done(err); // Hata durumunda done() ile hata ilet
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     res.body.should.have.property('title');
@@ -95,9 +99,7 @@ describe('/api/movies test',  () => {
                 .send(movie)
                 .set('x-access-token', token)
                 .end((err, res) => {
-                    if (err) {
-                        console.log('Hata:', err);
-                    }
+                    if (err) return done(err); // Hata durumunda done() ile hata ilet
                     console.log('Yanıt:', res.body);
                     res.should.have.status(200);
                     res.body.should.be.a('object');
@@ -119,6 +121,7 @@ describe('/DELETE/movie_id movie', () => {
             .delete('/api/movies/'+movieID)
             .set('x-access-token', token)
             .end((err, res) => {
+                if (err) return done(err); // Hata durumunda done() ile hata ilet
                 res.should.have.status(200);
                 res.body.should.be.a('object');
                 res.body.should.have.property('status').eql(1);

@@ -8,6 +8,7 @@ describe('Test Index Page', () => {
     it('(GET /) Returned Index Page', (done) => {
         chai.request.execute(server).get('/').end((err, res) => {
             res.should.have.status(200);
+            if (err) return done(err); // Hata durumunda done() ile hata ilet
             done();
         });
     });
