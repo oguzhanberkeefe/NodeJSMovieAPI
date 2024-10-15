@@ -1,21 +1,10 @@
 language: node_js
 node_js:
-  - "21"  # Yerel Node.js sürümünüze göre ayarlayın
-dist: focal
-
+  - 21
+dist: focal # veya jammy
 services:
   - mongodb  # MongoDB servisini burada ekledik
-
-env:
-  global:
-    - NODE_ENV=test
-    - MONGO_URL=mongodb+srv://berke04efe2004:YQeOYwgKZ25SbGAn@berke.iksgt.mongodb.net/?retryWrites=true&w=majority&appName=berke  # Test veritabanı bağlantı URL'i
-
 install:
-  - npm install
-
+    - npm install
 script:
   - npm run test
-
-# Mocha timeout sorununu çözmek için package.json dosyanızdaki test komutunu güncelleyin:
-# "test": "mocha --parallel --recursive --exit --timeout 20000"
