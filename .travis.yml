@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "21"
+  - "16"
 dist: focal # veya jammy
 services:
   - mongodb  # MongoDB servisini burada ekledik
