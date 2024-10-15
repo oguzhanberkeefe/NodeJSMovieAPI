@@ -11,9 +11,6 @@ env:
     - NODE_ENV=test
     - MONGO_URL=mongodb+srv://berke04efe2004:YQeOYwgKZ25SbGAn@berke.iksgt.mongodb.net/?retryWrites=true&w=majority&appName=berke  # Test veritabanı bağlantı URL'i
 
-before_script:
-  - mongo --eval 'use test_db'  # MongoDB'de test veritabanını oluşturmak için
-
 install:
   - npm install
 
