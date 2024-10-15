@@ -8,7 +8,7 @@ let token, directorID;
 
 describe('/api/directors Methods', () => {
     before((done) => {
-        chai.request.execute(server)
+        chai.request(server)
             .post('/login')
             .send({
                 username: 'yerlikacovv',
