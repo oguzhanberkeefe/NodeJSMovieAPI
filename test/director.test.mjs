@@ -8,14 +8,15 @@ let token, directorID;
 
 describe('/api/directors Methods', () => {
     before((done) => {
-        chai.request(server)
+        chai.request.execute(server)
             .post('/login')
             .send({
                 username: 'yerlikacovv',
                 password: '12345678'
             })
             .end((err, res) => {
-                if (err) return done(err); // Hata durumunda done() ile hata ilet
+                console.log('Response Body:', res.body);
+                if (err) return console.log('Response Body:', res.body); // Hata durumunda done() ile hata ilet
                 token = res.body.token;
                 console.log(token);
                 res.should.have.status(200);
