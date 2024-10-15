@@ -1,4 +1,4 @@
-[![Build Status] (https://api.travis-ci.com/oguzhanberkeefe/NodeJSMovieAPI.svg?token=qsnFCQJTYdQwJGVZmMFW&branch=main&status=passed)](https://app.travis-ci.com/github/oguzhanberkeefe/NodeJSMovieAPI/builds/272735509?serverType=git)
+[![Build Status](https://api.travis-ci.com/oguzhanberkeefe/NodeJSMovieAPI.svg?token=qsnFCQJTYdQwJGVZmMFW&branch=main&status=passed)](https://app.travis-ci.com/github/oguzhanberkeefe/NodeJSMovieAPI/builds/272735509?serverType=git)
 
 # NodeJSMovieAPI
 
