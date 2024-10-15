@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "start:dev": "nodemon ./bin/www",
-    "test": "mocha --parallel --exit --timeout 30000"
+    "test": "mocha --exit --timeout 30000"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -19,11 +19,15 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.1",
     "morgan": "~1.9.1",
-    "pug": "^3.0.3",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
     "@types/chai": "^5.0.0",
     "@types/chai-http": "^4.2.0",
-    "chai": "^5.1.1",
-    "chai-http": "^5.1.1",
-    "mocha": "^10.7.3"
+    "chai": "^4.4.0",
+    "chai-http": "^4.4.0",
+    "install": "^0.13.0",
+    "mocha": "^10.7.3",
+    "npm": "^10.9.0"
   }
 }

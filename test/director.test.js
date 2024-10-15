@@ -1,14 +1,14 @@
-import { use, expect } from 'chai'
-import chaiHttp from 'chai-http'
-import server from '../app.js';
-const chai = use(chaiHttp)
+const chai = require('chai');
+const chaiHttp = require('chai-http');
 const should = chai.should();
+const server = require('../app.js');
+chai.use(chaiHttp);
 
 let token, directorID;
 
 describe('/api/directors Methods', () => {
     before((done) => {
-        chai.request.execute(server)
+        chai.request(server)
             .post('/login')
             .send({
                 username: 'yerlikacovv',
@@ -26,7 +26,7 @@ describe('/api/directors Methods', () => {
     });
     describe('Get Method /api/directors', () => {
         it('it should get all directors', (done) => {
-            chai.request.execute(server)
+            chai.request(server)
                 .get('/api/directors')
                 .set('x-access-token', token)
                 .end((err, res) => {
@@ -44,7 +44,7 @@ describe('/api/directors Methods', () => {
               surname: "Doe",
                 bio: "Test Director Bio"
             };
-            chai.request.execute(server)
+            chai.request(server)
                 .post('/api/directors')
                 .send(director)
                 .set('x-access-token', token)
@@ -62,7 +62,7 @@ describe('/api/directors Methods', () => {
     });
     describe('Get Method /api/directors/:director_id', () => {
         it('it should get a director details', (done) => {
-            chai.request.execute(server)
+            chai.request(server)
                 .get('/api/directors/' + directorID)
                 .set('x-access-token', token)
                 .end((err, res) => {
@@ -96,7 +96,7 @@ describe('/api/directors Methods', () => {
             bio: "Test Updated Director Bio"
         };
         it('it should Update a director details', (done) => {
-            chai.request.execute(server)
+            chai.request(server)
                 .put('/api/directors/'+directorID)
                 .set('x-access-token', token)
                 .send(director)
@@ -113,7 +113,7 @@ describe('/api/directors Methods', () => {
     });
     describe('Delete Method /api/directors/:director_id', () => {
         it('it should DELETE a director', (done) => {
-            chai.request.execute(server)
+            chai.request(server)
                 .delete('/api/directors/'+directorID)
                 .set('x-access-token', token)
                 .end((err, res) => {
